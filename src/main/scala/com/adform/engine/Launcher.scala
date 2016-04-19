@@ -43,9 +43,9 @@ object Launcher {
     logger.info("Songs: {}", songs)
 
     //TODO compare songs by jaccard index
-/*  val first = converter.convert(Song(singer1, title1, firstFileContent.getOrElse("")))
+    val first = converter.convert(Song(singer1, title1, firstFileContent.getOrElse("")))
     val second = converter.convert(Song(singer2, title2, secondFileContent.getOrElse("")))
 
-    println(jaccardIndexService.getIndex(first, second))*/
+    logger.info("jaccard index: {}", jaccardIndexService.getIndex(first, second))
   }
 }
