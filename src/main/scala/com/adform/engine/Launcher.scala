@@ -1,9 +1,9 @@
 package com.adform.engine
 
 import com.adform.engine.domain.Song
-import com.adform.engine.model.InMemoryList
-import com.adform.engine.repository.impl.SongRepositoryInMemoryComponent
-import com.adform.engine.service.song.DefaultSongServiceComponent
+import com.adform.engine.model.InMemoryStorage
+import com.adform.engine.repository.impl.RepositoryInMemoryComponent
+import com.adform.engine.service.song.DefaultServiceComponent
 import com.adform.engine.service.{JaccardIndexService, SongConverter}
 import com.adform.engine.utils.FileUtils
 import org.slf4j.LoggerFactory
@@ -11,11 +11,11 @@ import org.slf4j.LoggerFactory
 object Launcher {
   val logger = LoggerFactory.getLogger(this.getClass)
 
-  val songServiceComponent = new DefaultSongServiceComponent with SongRepositoryInMemoryComponent {
-    val list = new InMemoryList()
+  val songServiceComponent = new DefaultServiceComponent[Song] with RepositoryInMemoryComponent[Song] {
+    val storage = new InMemoryStorage[Song]()
   }
 
-  val songService = songServiceComponent.songService
+  val songService = songServiceComponent.objectService
   val converter = new SongConverter
   val jaccardIndexService = new JaccardIndexService
 
