@@ -1,6 +1,7 @@
 package com.adform.engine
 
 import com.adform.engine.domain.Song
+import com.adform.engine.model.InMemoryList
 import com.adform.engine.repository.impl.SongRepositoryInMemoryComponent
 import com.adform.engine.service.song.DefaultSongServiceComponent
 import com.adform.engine.service.{JaccardIndexService, SongConverter}
@@ -11,7 +12,7 @@ object Launcher {
   val logger = LoggerFactory.getLogger(this.getClass)
 
   val songServiceComponent = new DefaultSongServiceComponent with SongRepositoryInMemoryComponent {
-    var songs = Set()
+    val list = new InMemoryList()
   }
 
   val songService = songServiceComponent.songService
@@ -25,10 +26,10 @@ object Launcher {
     val title1 = "Title1"
 
     val singer2 = "Singer2"
-    val title2 = "Title1"
+    val title2 = "Title2"
 
-    val firstFileContent = FileUtils.readFileToString("data" + separator + singer1 + " - " + title1)
-    val secondFileContent = FileUtils.readFileToString("data" + separator + singer2 + " - " + title2)
+    val firstFileContent = FileUtils.readFileToString("data" + separator + singer1 + " - " + title1 + ".txt")
+    val secondFileContent = FileUtils.readFileToString("data" + separator + singer2 + " - " + title2 + ".txt")
     //--------------------------------------------------------------------------------------------------------------
 
 
