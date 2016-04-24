@@ -1,7 +1,7 @@
 package com.adform.engine.repository.impl
 
-import com.adform.engine.model.InMemoryStorage
 import com.adform.engine.repository.RepositoryComponent
+import com.adform.engine.repository.storage.InMemoryStorage
 
 trait RepositoryInMemoryComponent[A] extends RepositoryComponent[A] {
   val storage: InMemoryStorage[A]
